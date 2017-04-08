@@ -1,0 +1,24 @@
+#NATURALREADORDER = TRUE #byte order
+#NATURALWRITEORDER = TRUE
+# Waveform parameters
+SOURCEFORMAT = ALIEN #file with head length = 0
+HEADERSIZE = 1024
+SOURCERATE = 625.0 #sampling rate, unit: 100 nsec
+# Coding parameters
+#TARGETKIND = MFCC_E #output is MFCC and energy
+TARGETKIND = MFCC #output is MFCC and energy
+TARGETRATE = 100000.0 #window shift for analysis, unit: 100 nsec
+SAVECOMPRESSED = F
+SAVEWITHCRC = T
+WINDOWSIZE = 320000.0 #window width for analysis, unit: 100 nsec
+ZMEANSOURCE = T #remove signal bias
+USEHAMMING = T #take hamming windows before FFT
+PREEMCOEF = 0.97 #pre-emphasis : 1-0.97Z^-1
+NUMCHANS = 24 #number of filter bands 
+USEPOWER = F
+CEPLIFTER = 22 #weighting MFCCs 
+LOFREQ = 0 #filter band begin from 0Hz 
+HIFREQ = 8000 #filter band stop at 8000Hz 
+NUMCEPS = 12 #number of cosine transform 
+ENORMALISE = T
+ALLOWCXTEXP = F
