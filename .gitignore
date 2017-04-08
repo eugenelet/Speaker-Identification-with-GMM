@@ -24,6 +24,6 @@ octave-workspace
 # Simulink autosave extension
 .autosave
 
-.pdf
+*.pdf
 
 # End of https://www.gitignore.io/api/matlab
