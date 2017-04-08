@@ -17,12 +17,15 @@ end
 
 % TEST
 accuracy = [];
-for test_sample=3:10
+for test_sample=1:4 % 3-4 5-6 7-8 9-10
 	correct_count = 0;
 	for person=1:speakers
 		max = -10e10;
-		train_file = strcat(strcat(strcat(strcat('MFCC\', num2str(person)), '_'), num2str(test_sample) ),'.mfc');
-		[features,samPeriod,paramKind] = readhtk_lite(train_file);
+		train_file_1 = strcat(strcat(strcat(strcat('MFCC\', num2str(person)), '_'), num2str((test_sample-1)*2 + 3) ),'.mfc');
+		train_file_2 = strcat(strcat(strcat(strcat('MFCC\', num2str(person)), '_'), num2str((test_sample-1)*2 + 4) ),'.mfc');
+		[features_1,samPeriod,paramKind] = readhtk_lite(train_file_1);
+		[features_2,samPeriod,paramKind] = readhtk_lite(train_file_2);
+		features = [features_1;features_2];
 		% Test speaker using all model
 		for model_cnt = 1:speakers
 			accu = 0;
@@ -40,7 +43,7 @@ for test_sample=3:10
 		end
 		% display(index)
 	end
-	accuracy(test_sample - 2) = correct_count * 100 / speakers;
+	accuracy(test_sample) = correct_count * 100 / speakers;
 	accuracy_str = ['Test sample ', num2str(test_sample) ,' Accuracy: ' , num2str(correct_count * 100 / speakers) , '%'];
 	display(accuracy_str);
 end
